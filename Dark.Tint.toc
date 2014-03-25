@@ -1,0 +1,14 @@
+## Interface: 50400
+## Title: Dark.Tint
+## Author: Darkend / DarkStorm / Zenedar / EU
+## Version: 0.0.1
+## Notes: Skinning and Misc UI
+## RequiredDeps: Dark.Core
+
+config.lua
+
+initialise.lua
+
+features\uiFont.lua
+
+run.lua
