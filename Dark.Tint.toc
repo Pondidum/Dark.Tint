@@ -10,5 +10,6 @@ config.lua
 initialise.lua
 
 features\uiFont.lua
+features\tooltipAdditions.lua
 
 run.lua
