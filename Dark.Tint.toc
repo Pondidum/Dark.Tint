@@ -12,5 +12,6 @@ initialise.lua
 features\uiFont.lua
 features\tooltipAdditions.lua
 features\tooltipPositioning.lua
+features\tooltipStyle.lua
 
 run.lua
