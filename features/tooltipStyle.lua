@@ -139,8 +139,8 @@ local styleTooltips = function()
 
 	GameTooltip:HookScript("OnTooltipSetUnit", function(self)
 		local lines = self:NumLines()
-		local GMF = GetMouseFocus()
-		local unit = (select(2, self:GetUnit())) or (GMF and GMF:GetAttribute("unit"))
+		local mouseFocus = GetMouseFocus()
+		local unit = (select(2, self:GetUnit())) or (mouseFocus and mouseFocus:GetAttribute("unit"))
 
 		-- A mage's mirror images sometimes doesn't return a unit, this would fix it
 		if (not unit) and (UnitExists("mouseover")) then

@@ -1,10 +1,9 @@
 local addon, ns = ...
 
-local events = ns.lib.events:new()
 local fonts = ns.lib.fonts
 
 local setFont = function(target, font, size, style, alpha)
-	
+
 	target:SetFont(font, size, style)
 
 	if alpha then
@@ -57,7 +56,6 @@ local applyFonts = function()
 	setFont(SubZoneTextString,                  NORMAL, 25, "OUTLINE")
 	setFont(PVPInfoTextString,                  NORMAL, 22, "THINOUTLINE")
 	setFont(PVPArenaTextString,                 NORMAL, 22, "THINOUTLINE")
-
 
 end
 
