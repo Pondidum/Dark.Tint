@@ -9,6 +9,9 @@ local initialise = function()
 	ns.lib = {
 		events = core.events,
 		fonts = core.fonts,
+		colors = core.colors,
+		textures = core.textures,
+		style = core.style,
 	}
 
 end
