@@ -14,6 +14,7 @@ features\tooltipAdditions.lua
 features\tooltipPositioning.lua
 features\tooltipStyle.lua
 features\macroUI.lua
+features\mapping.lua
 
 features\mapping\model.lua
 features\mapping\notificationContainer.lua
