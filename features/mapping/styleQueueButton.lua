@@ -2,7 +2,7 @@ local addon, ns = ...
 
 local style = ns.lib.style
 
-ns.features.mapping.add(function(model, config)
+ns.mapping.add(function(model, config)
 
 	local map = model.map
 	local container = model.notificationContainer

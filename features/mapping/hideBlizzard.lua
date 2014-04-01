@@ -1,6 +1,6 @@
 local addon, ns = ...
 
-ns.features.mapping.add(function(model, config)
+ns.mapping.add(function(model, config)
 
 	model.border:Hide()
 	model.background:Hide()

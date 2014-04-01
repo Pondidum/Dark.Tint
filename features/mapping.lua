@@ -2,10 +2,10 @@ local addon, ns = ...
 
 local runMapping = function()
 
-	local model = ns.feaures.mapping.model.new()
+	local model = ns.mapping.model.new()
 	local config = ns.config.mapping
 
-	for i, feature in ipairs(ns.features.mapping) do
+	for i, feature in ipairs(ns.mapping) do
 		feature(model, config)
 	end
 

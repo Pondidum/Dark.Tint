@@ -2,7 +2,7 @@ local addon, ns = ...
 
 local layout = ns.lib.layout
 
-ns.features.mapping.add(function(model, config)
+ns.mapping.add(function(model, config)
 
 	local container = CreateFrame("Frame", nil, model.map)
 

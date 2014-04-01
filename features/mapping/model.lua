@@ -60,4 +60,4 @@ local model = {
 
 }
 
-ns.features.mapping.model = model
+ns.mapping.model = model
