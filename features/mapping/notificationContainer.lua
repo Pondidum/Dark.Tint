@@ -1,11 +1,11 @@
 local addon, ns = ...
- 
+
 local layout = ns.lib.layout
 
 ns.features.mapping.add(function(model)
-	
+
 	local container = CreateFrame("Frame", nil, model.map)
-	
+
 	container:SetPoint("LEFT", model.map, "CENTER", 0, 0)
 	container:SetPoint("TOPRIGHT", model.map, "BOTTOMRIGHT", 0, -ns.config.spacing)
 	container:SetHeight(15)

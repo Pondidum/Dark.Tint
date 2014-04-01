@@ -1,15 +1,15 @@
 local addon, ns = ...
 
-local style = ns.lib.style 
+local style = ns.lib.style
 
 ns.features.mapping.add(function(model)
 
 	local map = model.map
 	local container = model.notificationContainer
-	
+
 	local button = model.queue.button
 	local icon = model.queue.icon
-	local border = model.queue.border 
+	local border = model.queue.border
 
 	icon:ClearAllPoints()
 	icon:SetPoint("TOPLEFT", button, "TOPLEFT", -2, 2)

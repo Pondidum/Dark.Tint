@@ -3,7 +3,7 @@ local addon, ns = ...
 local style = ns.lib.style
 
 ns.features.mapping.add(function(model)
-	
+
 	local map = model.map
 	local header = model.header
 	local headerText = model.headerText
@@ -36,5 +36,5 @@ ns.features.mapping.add(function(model)
 	cluster:SetPoint("TOPLEFT", header, "TOPLEFT", 0, 0)
 	cluster:SetPoint("TOPRIGHT", header, "TOPRIGHT", 0, 0)
 	cluster:SetPoint("BOTTOM", clock, "BOTTOM", 0, 0)
-	
+
 end)

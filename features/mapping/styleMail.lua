@@ -8,11 +8,11 @@ ns.features.mapping.add(function(model)
 	local map = model.map
 
 	local mailContainer = CreateFrame("Frame", nil, model.map)
-	
+
 	local texture = mailContainer:CreateTexture()
 	texture:SetAllPoints(mailContainer)
 	texture:SetTexture(ns.config.mailIcon)
-	
+
 	style.addShadow(mailContainer)
 	style.applyBackgroundTo(mailContainer)
 
@@ -27,7 +27,7 @@ ns.features.mapping.add(function(model)
 	icon:SetTexture(nil)
 
 	events.register("UPDATE_PENDING_MAIL", function()
-		
+
 		if HasNewMail() then
 			texture:SetVertexColor(1.0, 1.0, 1.0)
 		else

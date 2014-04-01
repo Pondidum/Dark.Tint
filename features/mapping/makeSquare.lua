@@ -4,8 +4,8 @@ ns.features.mapping.add(function(model)
 
   model.map:SetMaskTexture(ns.lib.textures.normal)
 
-  function GetMinimapShape() 
-    return "SQUARE" 
+  function GetMinimapShape()
+    return "SQUARE"
   end
 
 end)

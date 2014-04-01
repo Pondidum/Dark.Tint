@@ -8,7 +8,7 @@ ns.features.mapping.add(function(model)
 
 	map:EnableMouseWheel(true)
 	map:SetScript("OnMouseWheel", function(self, delta)
-	
+
 		if delta > 0 then
 			zoomIn:Click()
 		elseif delta < 0 then

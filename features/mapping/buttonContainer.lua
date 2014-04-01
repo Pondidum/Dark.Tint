@@ -1,10 +1,10 @@
 local addon, ns = ...
 
 local style = ns.lib.style
-local layout = ns.lib.layout 
+local layout = ns.lib.layout
 local events = ns.lib.events.new()
 
-local blizzardItems = { 
+local blizzardItems = {
 	--buttons:
 	MiniMapTracking = true,
 	MiniMapVoiceChatFrame = true,
@@ -43,31 +43,31 @@ ns.features.mapping.add(function(model)
 		button:RegisterForDrag(nil)
 		button:ClearAllPoints()
 		button:SetParent(container)
-		
+
 		container.add(button)
-			
-	end	
+
+	end
 
 	local findButtons = function()
-		
+
 		local buttons = {}
 
-		for i = 1, model.map:GetNumChildren() do 
-		 
+		for i = 1, model.map:GetNumChildren() do
+
 		 	local frame = select(i, model.map:GetChildren())
 			local name = frame:GetName()
-			
+
 			if name and not blizzardItems[name] then
 				table.insert(buttons, frame)
 			end
-			
-		end 
-		
+
+		end
+
 		for i, frame in ipairs(buttons) do
-		 
+
 			processButton(frame)
-			
-		end 
+
+		end
 
 
 	end

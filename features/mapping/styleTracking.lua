@@ -7,7 +7,7 @@ ns.features.mapping.add(function(model)
 
 	local map = model.map
 	local container = model.notificationContainer
-	local tracking = model.tracking 
+	local tracking = model.tracking
 
 	local button = model.tracking.button
 	local icon = model.tracking.icon
