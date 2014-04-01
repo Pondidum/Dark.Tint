@@ -7,7 +7,6 @@ local initialise = function()
 	ns.features = {}
 	ns.features.mapping = {}
 	ns.features.mapping.add = function(item) table.insert(ns.features.mapping, item) end
-}
 
 	ns.lib = {
 		events = core.events,
