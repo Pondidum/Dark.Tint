@@ -4,7 +4,7 @@ ns.config = {
 	mapping = {
 		spacing = 5,
 		screenOffset = 10,
-		mailIcon = [[Interface\AddOns\Dark.Mapping\textures\mail]],
-		searchIcon = [[Interface\AddOns\Dark.Mapping\textures\search]],
+		mailIcon = [[Interface\AddOns\Dark.Tint\textures\mail]],
+		searchIcon = [[Interface\AddOns\Dark.Tint\textures\search]],
 	}
 }
