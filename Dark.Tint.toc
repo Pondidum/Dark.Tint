@@ -15,4 +15,15 @@ features\tooltipPositioning.lua
 features\tooltipStyle.lua
 features\macroUI.lua
 
+features\mapping\model.lua
+features\mapping\notificationContainer.lua
+features\mapping\styleMap.lua
+features\mapping\styleClock.lua
+features\mapping\styleMail.lua
+features\mapping\styleTracking.lua
+features\mapping\styleQueueButton.lua
+features\mapping\hideBlizzard.lua
+features\mapping\mouseScroll.lua
+features\mapping\makeSquare.lua
+
 run.lua
