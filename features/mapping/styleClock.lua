@@ -2,7 +2,7 @@ local addon, ns = ...
 
 local style = ns.lib.style
 
-ns.features.mapping.add(function(model)
+ns.features.mapping.add(function(model, config)
 
 	local map = model.map
 
@@ -11,8 +11,8 @@ ns.features.mapping.add(function(model)
 	local text = model.clock.text
 	local alarm = model.clock.alarm
 
-	clock:SetPoint("TOPLEFT", map, "BOTTOMLEFT", 0, -ns.config.spacing)
-	clock:SetPoint("RIGHT", map, "CENTER", -ns.config.spacing, 0)
+	clock:SetPoint("TOPLEFT", map, "BOTTOMLEFT", 0, -config.spacing)
+	clock:SetPoint("RIGHT", map, "CENTER", -config.spacing, 0)
 	clock:SetHeight(15)
 
 	style.addShadow(clock)

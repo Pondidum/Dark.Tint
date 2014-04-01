@@ -1,6 +1,6 @@
 local addon, ns = ...
 
-ns.features.mapping.add(function(model)
+ns.features.mapping.add(function(model, config)
 
   model.map:SetMaskTexture(ns.lib.textures.normal)
 

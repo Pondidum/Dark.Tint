@@ -3,7 +3,7 @@ local addon, ns = ...
 local style = ns.lib.style
 local events = ns.lib.events.new()
 
-ns.features.mapping.add(function(model)
+ns.features.mapping.add(function(model, config)
 
 	local map = model.map
 	local container = model.notificationContainer
@@ -21,7 +21,7 @@ ns.features.mapping.add(function(model)
 
 	icon:ClearAllPoints()
 	icon:SetAllPoints(button)
-	icon:SetTexture(ns.config.searchIcon)
+	icon:SetTexture(config.searchIcon)
 
 	overlay:ClearAllPoints()
 	overlay:SetAllPoints(button)

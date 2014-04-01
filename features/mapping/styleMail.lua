@@ -3,7 +3,7 @@ local addon, ns = ...
 local style = ns.lib.style
 local events = ns.lib.events.new()
 
-ns.features.mapping.add(function(model)
+ns.features.mapping.add(function(model, config)
 
 	local map = model.map
 
@@ -11,7 +11,7 @@ ns.features.mapping.add(function(model)
 
 	local texture = mailContainer:CreateTexture()
 	texture:SetAllPoints(mailContainer)
-	texture:SetTexture(ns.config.mailIcon)
+	texture:SetTexture(config.mailIcon)
 
 	style.addShadow(mailContainer)
 	style.applyBackgroundTo(mailContainer)

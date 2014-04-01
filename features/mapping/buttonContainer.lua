@@ -22,13 +22,13 @@ local blizzardItems = {
 	TimeManagerClockButton = true,
 }
 
-ns.features.mapping.add(function(model)
+ns.features.mapping.add(function(model, config)
 
 	local container = CreateFrame("Frame", nil, UIParent)
 	model.buttonContainer = container
 
 	container:SetPoint("LEFT", model.map, "LEFT", 0, 0)
-	container:SetPoint("TOPRIGHT", model.notificationContainer, "BOTTOMRIGHT", 0, -ns.config.spacing)
+	container:SetPoint("TOPRIGHT", model.notificationContainer, "BOTTOMRIGHT", 0, -config.spacing)
 	container:SetHeight(20)
 
 	style.applyShadowTo(container)

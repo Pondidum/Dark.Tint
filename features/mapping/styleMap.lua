@@ -2,7 +2,7 @@ local addon, ns = ...
 
 local style = ns.lib.style
 
-ns.features.mapping.add(function(model)
+ns.features.mapping.add(function(model, config)
 
 	local map = model.map
 	local header = model.header
@@ -10,8 +10,8 @@ ns.features.mapping.add(function(model)
 
 	--MAP
 	map:ClearAllPoints()
-	map:SetPoint("TOPLEFT", header, "BOTTOMLEFT", 0, -ns.config.spacing)
-	map:SetPoint("TOPRIGHT", header, "BOTTOMRIGHT", 0, -ns.config.spacing)
+	map:SetPoint("TOPLEFT", header, "BOTTOMLEFT", 0, -config.spacing)
+	map:SetPoint("TOPRIGHT", header, "BOTTOMRIGHT", 0, -config.spacing)
 
 	style.addBackground(map)
 	style.addShadow(map)
@@ -20,7 +20,7 @@ ns.features.mapping.add(function(model)
 	--HEADER
 	header:SetWidth(Minimap:GetHeight())
 	header:ClearAllPoints()
-	header:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -ns.config.screenOffset, -ns.config.screenOffset)
+	header:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -config.screenOffset, -config.screenOffset)
 	header:SetHeight(15)
 
 	headerText:SetPoint("CENTER", header, "CENTER", 0, 0)
