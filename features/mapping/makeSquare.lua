@@ -1,10 +1,8 @@
 local addon, ns = ...
 
-local core = Dark.core
-
 ns.features.add(function(model)
 
-  model.map:SetMaskTexture(core.textures.normal)
+  model.map:SetMaskTexture(ns.lib.textures.normal)
 
   function GetMinimapShape() 
     return "SQUARE" 

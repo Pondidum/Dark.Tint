@@ -12,6 +12,7 @@ local initialise = function()
 		colors = core.colors,
 		textures = core.textures,
 		style = core.style,
+		layout = core.layout,
 	}
 
 end

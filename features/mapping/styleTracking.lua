@@ -1,8 +1,7 @@
 local addon, ns = ...
 
-local core = Dark.core
-local style = core.style
-local events = core.events.new()
+local style = ns.lib.style
+local events = ns.lib.events.new()
 
 ns.features.add(function(model)
 

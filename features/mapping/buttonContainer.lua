@@ -1,9 +1,8 @@
 local addon, ns = ...
 
-local core = Dark.core
-local style = core.style
-local layout = core.layout 
-local events = core.events.new()
+local style = ns.lib.style
+local layout = ns.lib.layout 
+local events = ns.lib.events.new()
 
 local blizzardItems = { 
 	--buttons:
