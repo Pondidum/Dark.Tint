@@ -5,6 +5,9 @@ local initialise = function()
 	local core = Dark.core
 
 	ns.features = {}
+	ns.features.mapping = {}
+	ns.features.mapping.add = function(item) table.insert(ns.features.mapping, item) end
+}
 
 	ns.lib = {
 		events = core.events,

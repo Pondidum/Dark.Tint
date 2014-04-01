@@ -22,7 +22,7 @@ local blizzardItems = {
 	TimeManagerClockButton = true,
 }
 
-ns.features.add(function(model)
+ns.features.mapping.add(function(model)
 
 	local container = CreateFrame("Frame", nil, UIParent)
 	model.buttonContainer = container

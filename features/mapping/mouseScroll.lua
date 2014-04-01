@@ -1,6 +1,6 @@
 local addon, ns = ...
 
-ns.features.add(function(model)
+ns.features.mapping.add(function(model)
 
 	local map = model.map
 	local zoomIn = model.buttons.zoomIn
