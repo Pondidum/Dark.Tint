@@ -6,6 +6,7 @@
 * Minimap Styling
 * Tooltip Styling and expansion
 * MacroUI improvement (larger icon grid)
+* loot roll replacement
 
 ##Acknowledgments
 * Mail and Search textures from http://www.greepit.com/open-source-icons-gcons/

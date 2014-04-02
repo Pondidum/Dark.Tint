@@ -13,6 +13,7 @@ features\uiFont.lua
 features\tooltipAdditions.lua
 features\tooltipPositioning.lua
 features\tooltipStyle.lua
+features\lootroll.lua
 features\macroUI.lua
 features\mapping.lua
 
