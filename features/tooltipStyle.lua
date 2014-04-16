@@ -167,7 +167,7 @@ local styleTooltips = function()
 
 		local color = getUnitColor(unit)
 
-		_G["GameTooltipTextLeft1"]:SetFormattedText("%s%s%s", color, title or name, realm and realm ~= "" and " - "..realm.."|r" or "|r")
+		_G["GameTooltipTextLeft1"]:SetFormattedText("%s%s%s", color, title or name or "", realm and realm ~= "" and " - "..realm.."|r" or "|r")
 
 		if(UnitIsPlayer(unit)) then
 			if UnitIsAFK(unit) then
