@@ -18,6 +18,7 @@ features\macroUI.lua
 features\objectives.lua
 features\skinBuffs.lua
 features\professions.lua
+features\guildLog.lua
 
 features\mapping.lua
 features\mapping\model.lua
