@@ -12,6 +12,8 @@ local moveObjectives = function()
 	frame:ClearAllPoints()
 	frame:SetPoint("LEFT", UIParent, "LEFT", 10, 0)
 	frame:SetHeight(height / 2)
+
+	frame.SetPoint = function() end
 	frame.ClearAllPoints = function() end
 
 	button:ClearAllPoints()
@@ -20,16 +22,6 @@ local moveObjectives = function()
 	header:ClearAllPoints()
 	header:SetPoint("LEFT", button, "RIGHT", 5, -2)
 
-	local original = frame.SetPoint
-	frame.SetPoint = function(self, thisFrame, point, relativeFrame, relativePoint, offsetx, offsety)
-
-		if point == "TOPRIGHT" or point == "BOTTOMRIGHT" then
-			return
-		end
-
-		original(self, thisFrame, point, relativeFrame, relativePoint, offsetx, offsety)
-
-	end
 
 end
 
