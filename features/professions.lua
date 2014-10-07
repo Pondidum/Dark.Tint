@@ -86,8 +86,8 @@ local adjustTradeskill = function()
 	events.register("ADDON_LOADED", function(self, event, addon)
 
 		if addon == "Blizzard_TradeSkillUI" then
-			applyTradeskillModifications()
 			events.unregister("ADDON_LOADED")
+			applyTradeskillModifications()
 		end
 
 	end)
