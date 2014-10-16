@@ -137,6 +137,30 @@ local styleTooltips = function()
 	style.addBackground(healthBarBG)
 	style.addShadow(healthBarBG)
 
+	healthBar:SetStatusBarColor(colors.background)
+
+	local styleHealthBar = function(self, classKey, player, reaction)
+		if player then
+
+			healthBar:SetStatusBarColor(unpack(colors.class[classKey]))
+
+		elseif reaction then
+
+			healthBar:SetStatusBarColor(unpack(colors.reaction[reaction]))
+
+		else
+
+			local itemName, link = self:GetItem()
+			local quality = link and select(3, GetItemInfo(link))
+
+			if quality and quality >= 2 then
+				self.shadow:SetBackdropBorderColor(GetItemQualityColor(quality))
+			end
+
+		end
+
+	end
+
 	GameTooltip:HookScript("OnTooltipSetUnit", function(self)
 		local lines = self:NumLines()
 		local mouseFocus = GetMouseFocus()
@@ -156,10 +180,13 @@ local styleTooltips = function()
 		end
 
 		local race = UnitRace(unit)
-		local class = UnitClass(unit)
+		local class, classKey = UnitClass(unit)
 		local level = UnitLevel(unit)
 		local guild = GetGuildInfo(unit)
 		local name, realm = UnitName(unit)
+		local reaction = unit and UnitReaction(unit, "player")
+		local player = unit and UnitIsPlayer(unit)
+
 		local crtype = UnitCreatureType(unit)
 		local classif = UnitClassification(unit)
 		local title = UnitPVPName(unit)
@@ -169,7 +196,9 @@ local styleTooltips = function()
 
 		_G["GameTooltipTextLeft1"]:SetFormattedText("%s%s%s", color, title or name or "", realm and realm ~= "" and " - "..realm.."|r" or "|r")
 
-		if(UnitIsPlayer(unit)) then
+		styleHealthBar(self, classKey, player, reaction)
+
+		if player then
 			if UnitIsAFK(unit) then
 				self:AppendText((" %s"):format(CHAT_FLAG_AFK))
 			elseif UnitIsDND(unit) then
@@ -220,72 +249,28 @@ local styleTooltips = function()
 		self.fadeOut = nil
 	end)
 
-	local needBackdropBorderRefresh = true
-
 	-- Update Tooltip Position on some specifics Tooltip
-	local updateTooltip = function(self)
+	GameTooltip:HookScript("OnUpdate", function(self)
 
 		-- h4x for world object tooltip border showing last border color or showing background sometime ~blue :x
-		if needBackdropBorderRefresh and self:GetAnchorType() == "ANCHOR_CURSOR" then
+		if self:GetAnchorType() == "ANCHOR_CURSOR" then
 
-			needBackdropBorderRefresh = false
 			self:SetBackdropColor(unpack(colors.background))
 			self:SetBackdropBorderColor(unpack(colors.shadow))
 
 		end
 
-	end
+	end)
 
-	GameTooltip:HookScript("OnUpdate", updateTooltip)
-
-	local BorderColor = function(self)
-
-		local mouseFocus = GetMouseFocus()
-		local unit = (select(2, self:GetUnit())) or (mouseFocus and mouseFocus:GetAttribute("unit"))
-
-		local reaction = unit and UnitReaction(unit, "player")
-		local player = unit and UnitIsPlayer(unit)
-		local tapped = unit and UnitIsTapped(unit)
-		local tappedbyme = unit and UnitIsTappedByPlayer(unit)
-		local connected = unit and UnitIsConnected(unit)
-		local dead = unit and UnitIsDead(unit)
-
-		local r, g, b, a = unpack(colors.background)
-
-		self.bg:SetBackdropColor(r, g, b, 0.8)
-		self.shadow:SetBackdropBorderColor(unpack(colors.shadow))
-		healthBar:SetStatusBarColor(r, g, b, a)
-
-		if player then
-
-			local localClass, class = UnitClass(unit)
-			healthBar:SetStatusBarColor(unpack(colors.class[class]))
-
-		elseif reaction then
-
-			healthBar:SetStatusBarColor(unpack(colors.reaction[reaction]))
-
-		else
-
-			local itemName, link = self:GetItem()
-			local quality = link and select(3, GetItemInfo(link))
-
-			if quality and quality >= 2 then
-				self.shadow:SetBackdropBorderColor(GetItemQualityColor(quality))
-			end
-
-		end
-
-		-- need this
-		needBackdropBorderRefresh = true
-	end
 
 	local styleTooltip = function(self)
 		self:SetBackdrop(nil)
 		style.addBackground(self)
 		style.addShadow(self)
 
-		BorderColor(self)
+		local r, g, b = unpack(colors.background)
+
+		self.bg:SetBackdropColor(r, g, b, 0.8)
 	end
 
 
