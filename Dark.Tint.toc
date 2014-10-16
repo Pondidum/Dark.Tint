@@ -1,7 +1,7 @@
-## Interface: 50400
+## Interface: 60000
 ## Title: Dark.Tint
 ## Author: Darkend / DarkStorm / Zenedar / EU
-## Version: 0.0.1
+## Version: 0.0.2
 ## Notes: UI Skinning and Misc UI
 ## RequiredDeps: Dark.Core, Blizzard_TimeManager
 
