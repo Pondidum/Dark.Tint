@@ -6,7 +6,7 @@ ns.mapping.add(function(model, config)
 
 	local container = CreateFrame("Frame", nil, model.map)
 
-	container:SetPoint("LEFT", model.map, "CENTER", 0, 0)
+	container:SetPoint("LEFT", model.clock.button, "RIGHT", config.spacing, 0)
 	container:SetPoint("TOPRIGHT", model.map, "BOTTOMRIGHT", 0, -config.spacing)
 	container:SetHeight(15)
 

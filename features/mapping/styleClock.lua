@@ -12,8 +12,7 @@ ns.mapping.add(function(model, config)
 	local alarm = model.clock.alarm
 
 	clock:SetPoint("TOPLEFT", map, "BOTTOMLEFT", 0, -config.spacing)
-	clock:SetPoint("RIGHT", map, "CENTER", -config.spacing, 0)
-	clock:SetHeight(15)
+	clock:SetSize(60, 15)
 
 	style.addShadow(clock)
 	style.addBackground(clock)
