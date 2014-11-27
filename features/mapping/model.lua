@@ -49,6 +49,10 @@ local model = {
 			overlay = MiniMapTrackingButton
 		}
 
+		this.garrison = {
+			button = GarrisonLandingPageMinimapButton
+		}
+
 		this.icons = {}
 		this.icons.instanceDifficulty = MiniMapInstanceDifficulty
 		this.icons.guildDifficulty = GuildInstanceDifficulty

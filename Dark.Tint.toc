@@ -26,6 +26,7 @@ features\mapping\notificationContainer.lua
 features\mapping\styleMap.lua
 features\mapping\styleClock.lua
 features\mapping\styleMail.lua
+features\mapping\styleGarrisonButton.lua
 features\mapping\styleTracking.lua
 features\mapping\styleQueueButton.lua
 features\mapping\hideBlizzard.lua
