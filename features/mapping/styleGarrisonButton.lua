@@ -9,6 +9,7 @@ ns.mapping.add(function(model, config)
 
 	local button = model.garrison.button
 
+	button:SetHitRectInsets(0, 0, 0, 0)
 	-- icon:ClearAllPoints()
 	-- icon:SetPoint("TOPLEFT", button, "TOPLEFT", -2, 2)
 	-- icon:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", 2, -2)
