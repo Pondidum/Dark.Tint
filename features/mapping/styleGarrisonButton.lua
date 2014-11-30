@@ -8,13 +8,10 @@ ns.mapping.add(function(model, config)
 	local container = model.notificationContainer
 
 	local button = model.garrison.button
+	local glow = model.garrison.glow
 
 	button:SetHitRectInsets(0, 0, 0, 0)
-	-- icon:ClearAllPoints()
-	-- icon:SetPoint("TOPLEFT", button, "TOPLEFT", -2, 2)
-	-- icon:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", 2, -2)
-
-	--border:Hide()
+	glow:SetAllPoints(button)
 
 	style.addBackground(button)
 	style.addShadow(button)

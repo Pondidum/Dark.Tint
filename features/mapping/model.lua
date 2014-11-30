@@ -50,7 +50,8 @@ local model = {
 		}
 
 		this.garrison = {
-			button = GarrisonLandingPageMinimapButton
+			button = GarrisonLandingPageMinimapButton,
+			glow = GarrisonLandingPageMinimapButton.LoopingGlow
 		}
 
 		this.icons = {}
