@@ -24,8 +24,8 @@ ns.mapping.add(function(model, config)
 	icon:SetAllPoints(button)
 	icon:SetTexture(config.garrisonIcon)
 
-
 	button:SetParent(container)
 	container.add(button)
 
+	GarrisonMinimapShipmentCreated_ShowPulse = function() end
 end)
