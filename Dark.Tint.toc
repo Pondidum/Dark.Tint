@@ -3,7 +3,7 @@
 ## Author: Darkend / DarkStorm / Zenedar / EU
 ## Version: 0.0.2
 ## Notes: UI Skinning and Misc UI
-## RequiredDeps: Dark.Core, Blizzard_TimeManager
+## RequiredDeps: Dark, Blizzard_TimeManager
 
 config.lua
 
