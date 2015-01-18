@@ -1,40 +1,57 @@
 local addon, ns = ...
 
+local class = ns.lib.class
 local style = ns.lib.style
-local events = ns.lib.events.new()
+local events = Darker.events
 
-ns.mapping.add(function(model, config)
 
-	local map = model.map
+local mailStyle = class:extend({
 
-	local mailContainer = CreateFrame("Frame", nil, model.map)
+	ctor = function(self, model, config)
+		self:include(events)
 
-	local texture = mailContainer:CreateTexture()
-	texture:SetAllPoints(mailContainer)
-	texture:SetTexture(config.mailIcon)
+		self.model = model
+		self.config = config
 
-	style:frame(mailContainer)
+		self:modifyUI()
+		self:register("UPDATE_PENDING_MAIL")
+	end,
 
-	local button = model.mail.button
-	local border = model.mail.border
-	local icon = model.mail.icon
-
-	button:SetAllPoints(mailContainer)
-	border:Hide()
-
-	icon:SetAllPoints(mailContainer)
-	icon:SetTexture(nil)
-
-	events.register("UPDATE_PENDING_MAIL", function()
+	UPDATE_PENDING_MAIL = function(self)
 
 		if HasNewMail() then
-			texture:SetVertexColor(1.0, 1.0, 1.0)
+			self.texture:SetVertexColor(1.0, 1.0, 1.0)
 		else
-			texture:SetVertexColor(0.5, 0.5, 0.5)
+			self.texture:SetVertexColor(0.5, 0.5, 0.5)
 		end
 
-	end)
+	end,
 
-	model.notificationContainer.add(mailContainer)
+	modifyUI = function(self)
 
-end)
+		local map = self.model.map
+		local mailContainer = CreateFrame("Frame", nil, self.model.map)
+
+		local texture = mailContainer:CreateTexture()
+		texture:SetAllPoints(mailContainer)
+		texture:SetTexture(self.config.mailIcon)
+
+		style:frame(mailContainer)
+
+		local button = self.model.mail.button
+		local border = self.model.mail.border
+		local icon = self.model.mail.icon
+
+		button:SetAllPoints(mailContainer)
+		border:Hide()
+
+		icon:SetAllPoints(mailContainer)
+		icon:SetTexture(nil)
+
+		self.texture = texture
+		self.model.notificationContainer.add(mailContainer)
+
+	end,
+})
+
+ns.mapping.add(function(model, config) mailStyle:new(model, config) end)
