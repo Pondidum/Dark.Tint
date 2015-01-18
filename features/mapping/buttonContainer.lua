@@ -1,6 +1,6 @@
 local addon, ns = ...
 
-local style = ns.lib.style
+local style = Darker.style
 local layout = ns.lib.layout
 local events = ns.lib.events.new()
 
@@ -31,7 +31,7 @@ ns.mapping.add(function(model, config)
 	container:SetPoint("TOPRIGHT", model.notificationContainer, "BOTTOMRIGHT", 0, -config.spacing)
 	container:SetHeight(20)
 
-	style.applyShadowTo(container)
+	style:border(container)
 
 	layout.init(container, {
 		wrap = true,
