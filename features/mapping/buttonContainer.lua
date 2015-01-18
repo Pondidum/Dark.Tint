@@ -61,10 +61,20 @@ local buttonContainer = class:extend({
 
 		style:border(container)
 
-		layout.init(container, {
+		local engine = layout:new(container, {
+			layout = "horizontal",
 			wrap = true,
-			autosize = true,
+			autosize = "y",
 		})
+
+		container.add = function(child)
+
+			child:SetSize(15, 15)
+
+			engine:addChild(child)
+			engine:performLayout()
+
+		end
 
 		self.container = container
 	end,

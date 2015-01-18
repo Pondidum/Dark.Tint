@@ -10,19 +10,21 @@ ns.mapping.add(function(model, config)
 	container:SetPoint("TOPRIGHT", model.map, "BOTTOMRIGHT", 0, -config.spacing)
 	container:SetHeight(15)
 
-	layout.init(container, {
-		marginTop = 0,
-		marginRight = config.spacing,
-		marginBottom = 0,
-		marginLeft = 0,
-
-		paddingTop = 0,
-		paddingLeft = 0,
-
-		defaultChildHeight = 15,
-		defaultChildWidth = 15,
-		forceChildSize = true,
+	local engine = layout:new(container, {
+		layout = "horizontal",
+		origin = "LEFT",
+		wrap = false,
+		itemSpacing = config.spacing,
 	})
+
+	container.add = function(child)
+
+		child:SetSize(15, 15)
+
+		engine:addChild(child)
+		engine:performLayout()
+
+	end
 
 	model.notificationContainer = container
 

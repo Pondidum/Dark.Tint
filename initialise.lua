@@ -15,7 +15,7 @@ local initialise = function()
 		colors = Darker.media.colors,
 		textures = Darker.media.textures,
 		style = Darker.style,
-		layout = core.layout,
+		layout = Darker.layoutEngine,
 	}
 
 end
