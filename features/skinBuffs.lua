@@ -1,7 +1,7 @@
 local addon, ns = ...
 
-local style = ns.lib.style
 local fonts = ns.lib.fonts
+local style = Darker.style
 
 local skinBuffs = function()
 
@@ -9,10 +9,10 @@ local skinBuffs = function()
 
 		local button = _G[name]
 		local icon = _G[name.."Icon"]
-		local border=  _G[name.."Border"]
+		local border = _G[name.."Border"]
 
 		button.duration:SetFont(fonts.normal, 10)
-		style.applyShadowTo(button)
+		style:border(button)
 
 		icon:SetTexCoord(.08, .92, .08, .92)
 		icon:SetPoint("TOPLEFT", button, 2, -2)
