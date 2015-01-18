@@ -1,6 +1,6 @@
 local addon, ns = ...
 
-local style = ns.lib.style
+local style = Darker.style
 local events = ns.lib.events.new()
 
 ns.mapping.add(function(model, config)
@@ -13,8 +13,7 @@ ns.mapping.add(function(model, config)
 	texture:SetAllPoints(mailContainer)
 	texture:SetTexture(config.mailIcon)
 
-	style.addShadow(mailContainer)
-	style.applyBackgroundTo(mailContainer)
+	style:frame(mailContainer)
 
 	local button = model.mail.button
 	local border = model.mail.border
