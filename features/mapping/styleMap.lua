@@ -1,6 +1,6 @@
 local addon, ns = ...
 
-local style = ns.lib.style
+local style = Darker.style
 
 ns.mapping.add(function(model, config)
 
@@ -13,9 +13,7 @@ ns.mapping.add(function(model, config)
 	map:SetPoint("TOPLEFT", header, "BOTTOMLEFT", 0, -config.spacing)
 	map:SetPoint("TOPRIGHT", header, "BOTTOMRIGHT", 0, -config.spacing)
 
-	style.addBackground(map)
-	style.addShadow(map)
-
+	style:frame(map)
 
 	--HEADER
 	header:SetWidth(Minimap:GetHeight())
@@ -25,8 +23,7 @@ ns.mapping.add(function(model, config)
 
 	headerText:SetPoint("CENTER", header, "CENTER", 0, 0)
 
-	style.addBackground(header)
-	style.addShadow(header)
+	style:frame(header)
 
 	--cluster
 	local cluster = model.cluster
