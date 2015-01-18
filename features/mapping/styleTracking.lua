@@ -1,6 +1,6 @@
 local addon, ns = ...
 
-local style = ns.lib.style
+local style = Darker.style
 local events = ns.lib.events.new()
 
 ns.mapping.add(function(model, config)
@@ -13,8 +13,7 @@ ns.mapping.add(function(model, config)
 	local icon = model.tracking.icon
 	local overlay = model.tracking.overlay
 
-	style.addShadow(button)
-	style.applyBackgroundTo(button)
+	style:frame(button)
 
 	tracking.background:Hide()
 	tracking.border:Hide()
