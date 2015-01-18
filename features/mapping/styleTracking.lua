@@ -1,34 +1,47 @@
 local addon, ns = ...
 
+local class = ns.lib.class
 local style = ns.lib.style
-local events = ns.lib.events.new()
+local events = Darker.events
 
-ns.mapping.add(function(model, config)
+local trackingStyle = class:extend({
 
-	local map = model.map
-	local container = model.notificationContainer
-	local tracking = model.tracking
+	ctor = function(self, model, config)
+		self.model = model
+		self.config = config
 
-	local button = model.tracking.button
-	local icon = model.tracking.icon
-	local overlay = model.tracking.overlay
+		self:modifyUI()
+	end,
 
-	style:frame(button)
+	modifyUI = function(self)
 
-	tracking.background:Hide()
-	tracking.border:Hide()
+		local map = self.model.map
+		local container = self.model.notificationContainer
+		local tracking = self.model.tracking
 
-	icon:ClearAllPoints()
-	icon:SetAllPoints(button)
-	icon:SetTexture(config.searchIcon)
+		local button = self.model.tracking.button
+		local icon = self.model.tracking.icon
+		local overlay = self.model.tracking.overlay
 
-	overlay:ClearAllPoints()
-	overlay:SetAllPoints(button)
-	overlay:SetHighlightTexture(nil)
-	overlay:SetScript("OnMouseDown", nil)
-	overlay:SetScript("OnMouseUp", nil)
+		style:frame(button)
 
-	button:SetParent(container)
-	container.add(button)
+		tracking.background:Hide()
+		tracking.border:Hide()
 
-end)
+		icon:ClearAllPoints()
+		icon:SetAllPoints(button)
+		icon:SetTexture(self.config.searchIcon)
+
+		overlay:ClearAllPoints()
+		overlay:SetAllPoints(button)
+		overlay:SetHighlightTexture(nil)
+		overlay:SetScript("OnMouseDown", nil)
+		overlay:SetScript("OnMouseUp", nil)
+
+		button:SetParent(container)
+		container.add(button)
+
+	end,
+})
+
+ns.mapping.add(function(model, config) trackingStyle:new(model, config) end)
