@@ -9,6 +9,7 @@ local initialise = function()
 	ns.mapping.add = function(item) table.insert(ns.mapping, item) end
 
 	ns.lib = {
+		class = Darker.class,
 		events = core.events,
 		fonts = Darker.media.fonts,
 		colors = Darker.media.colors,
