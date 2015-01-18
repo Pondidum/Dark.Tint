@@ -1,6 +1,6 @@
 local addon, ns = ...
 
-local events = ns.lib.events:new()
+--local events = ns.lib.events:new()
 
 --[[
 Based on LargerMacroIconSelection v1.0.2 by Xinhuan

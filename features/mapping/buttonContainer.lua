@@ -3,7 +3,7 @@ local addon, ns = ...
 local class = ns.lib.class
 local style = ns.lib.style
 local layout = ns.lib.layout
-local events = Darker.events
+local events = ns.lib.events
 
 local buttonContainer = class:extend({
 

@@ -10,7 +10,7 @@ local initialise = function()
 
 	ns.lib = {
 		class = Darker.class,
-		events = core.events,
+		events = Darker.events,
 		fonts = Darker.media.fonts,
 		colors = Darker.media.colors,
 		textures = Darker.media.textures,

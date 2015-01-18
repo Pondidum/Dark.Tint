@@ -1,7 +1,7 @@
 local addon, ns = ...
 
 local class = ns.lib.class
-local events = Darker.events
+local events = ns.lib.events
 
 local tradeModifications = class:extend({
 

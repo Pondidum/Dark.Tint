@@ -2,7 +2,7 @@ local addon, ns = ...
 
 local class = ns.lib.class
 local style = ns.lib.style
-local events = Darker.events
+local events = ns.lib.events
 
 local trackingStyle = class:extend({
 
