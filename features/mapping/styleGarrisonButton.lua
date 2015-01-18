@@ -1,6 +1,6 @@
 local addon, ns = ...
 
-local style = ns.lib.style
+local style = Darker.style
 
 ns.mapping.add(function(model, config)
 
@@ -14,8 +14,7 @@ ns.mapping.add(function(model, config)
 
 	button:SetScript("OnShow", nil)
 
-	style.addBackground(button)
-	style.addShadow(button)
+	style:frame(button)
 
 	local glow = model.garrison.glow
 	glow:SetAllPoints(button)
