@@ -1,97 +1,103 @@
 local addon, ns = ...
 
-local events = ns.lib.events.new()
+local class = ns.lib.class
+local events = Darker.events
 
-local applyTradeskillModifications = function()
+local tradeModifications = class:extend({
 
-	TradeSkillFrame:SetAttribute("UIPanelLayout-width", 695) --orig 384
+	ctor = function(self)
+		self:include(events)
+		self:register("ADDON_LOADED")
+	end,
 
-	TradeSkillFrame:SetWidth(695)
+	ADDON_LOADED = function(self, addonName)
 
-	--widen the skill level statusbar
-	TradeSkillRankFrame:ClearAllPoints()
-	TradeSkillRankFrame:SetPoint("TOPLEFT", 75, -38)
-	TradeSkillRankFrame:SetWidth(575)
+		if addonName == "Blizzard_TradeSkillUI" then
+			self:unregister("ADDON_LOADED")
+			self:modifyUI()
+		end
 
-	--Widen the skill rank border
-	TradeSkillRankFrameBorder:SetTexture(nil)
-	TradeSkillRankFrameBorder:ClearAllPoints()
-	TradeSkillRankFrameBorder:SetPoint("LEFT", -4, 0)
-	TradeSkillRankFrameBorder:SetWidth(584); TradeSkillRankFrameBorder:SetHeight(17)
+	end,
 
-	--Move the skill rank string
-	TradeSkillRankFrameSkillRank:ClearAllPoints()
-	TradeSkillRankFrameSkillRank:SetPoint("CENTER", TradeSkillRankFrame, 0, 1)
+	modifyUI = function(self)
 
-	TRADE_SKILLS_DISPLAYED = 19
+		TradeSkillFrame:SetAttribute("UIPanelLayout-width", 695) --orig 384
 
-	CreateFrame("Button", "TradeSkillSkill9", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill8, "BOTTOMLEFT")
-	CreateFrame("Button", "TradeSkillSkill10", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill9, "BOTTOMLEFT")
-	CreateFrame("Button", "TradeSkillSkill11", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill10, "BOTTOMLEFT")
-	CreateFrame("Button", "TradeSkillSkill12", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill11, "BOTTOMLEFT")
-	CreateFrame("Button", "TradeSkillSkill13", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill12, "BOTTOMLEFT")
-	CreateFrame("Button", "TradeSkillSkill14", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill13, "BOTTOMLEFT")
-	CreateFrame("Button", "TradeSkillSkill15", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill14, "BOTTOMLEFT")
-	CreateFrame("Button", "TradeSkillSkill16", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill15, "BOTTOMLEFT")
-	CreateFrame("Button", "TradeSkillSkill17", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill16, "BOTTOMLEFT")
-	CreateFrame("Button", "TradeSkillSkill18", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill17, "BOTTOMLEFT")
-	CreateFrame("Button", "TradeSkillSkill19", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill18, "BOTTOMLEFT")
+		TradeSkillFrame:SetWidth(695)
 
-	--Tradeskill skills list
-	TradeSkillListScrollFrame:ClearAllPoints()
-	TradeSkillListScrollFrame:SetPoint("TOPLEFT", 22, -86);
-	TradeSkillListScrollFrame:SetHeight(310)
+		--widen the skill level statusbar
+		TradeSkillRankFrame:ClearAllPoints()
+		TradeSkillRankFrame:SetPoint("TOPLEFT", 75, -38)
+		TradeSkillRankFrame:SetWidth(575)
 
-	--The stuff which shows reagents and what produced
-	TradeSkillDetailScrollFrame:ClearAllPoints();
-	TradeSkillDetailScrollFrame:SetPoint("TOPLEFT", TradeSkillListScrollFrame, "TOPRIGHT", 35, -2) -- -2
-	TradeSkillDetailScrollFrame:SetWidth(298)
-	TradeSkillDetailScrollFrame:SetHeight(310)
+		--Widen the skill rank border
+		TradeSkillRankFrameBorder:SetTexture(nil)
+		TradeSkillRankFrameBorder:ClearAllPoints()
+		TradeSkillRankFrameBorder:SetPoint("LEFT", -4, 0)
+		TradeSkillRankFrameBorder:SetWidth(584); TradeSkillRankFrameBorder:SetHeight(17)
 
-	--Texture mucking about now
-	for i, region in ipairs({TradeSkillFrame:GetRegions()}) do
-		if region:IsObjectType("Texture") then
-			if region:GetTexture() == [[Interface\ClassTrainerFrame\UI-ClassTrainer-HorizontalBar]] then
-				region:Hide()
+		--Move the skill rank string
+		TradeSkillRankFrameSkillRank:ClearAllPoints()
+		TradeSkillRankFrameSkillRank:SetPoint("CENTER", TradeSkillRankFrame, 0, 1)
+
+		TRADE_SKILLS_DISPLAYED = 19
+
+		CreateFrame("Button", "TradeSkillSkill9", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill8, "BOTTOMLEFT")
+		CreateFrame("Button", "TradeSkillSkill10", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill9, "BOTTOMLEFT")
+		CreateFrame("Button", "TradeSkillSkill11", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill10, "BOTTOMLEFT")
+		CreateFrame("Button", "TradeSkillSkill12", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill11, "BOTTOMLEFT")
+		CreateFrame("Button", "TradeSkillSkill13", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill12, "BOTTOMLEFT")
+		CreateFrame("Button", "TradeSkillSkill14", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill13, "BOTTOMLEFT")
+		CreateFrame("Button", "TradeSkillSkill15", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill14, "BOTTOMLEFT")
+		CreateFrame("Button", "TradeSkillSkill16", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill15, "BOTTOMLEFT")
+		CreateFrame("Button", "TradeSkillSkill17", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill16, "BOTTOMLEFT")
+		CreateFrame("Button", "TradeSkillSkill18", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill17, "BOTTOMLEFT")
+		CreateFrame("Button", "TradeSkillSkill19", TradeSkillFrame, "TradeSkillSkillButtonTemplate"):SetPoint("TOPLEFT", TradeSkillSkill18, "BOTTOMLEFT")
+
+		--Tradeskill skills list
+		TradeSkillListScrollFrame:ClearAllPoints()
+		TradeSkillListScrollFrame:SetPoint("TOPLEFT", 22, -86);
+		TradeSkillListScrollFrame:SetHeight(310)
+
+		--The stuff which shows reagents and what produced
+		TradeSkillDetailScrollFrame:ClearAllPoints();
+		TradeSkillDetailScrollFrame:SetPoint("TOPLEFT", TradeSkillListScrollFrame, "TOPRIGHT", 35, -2) -- -2
+		TradeSkillDetailScrollFrame:SetWidth(298)
+		TradeSkillDetailScrollFrame:SetHeight(310)
+
+		--Texture mucking about now
+		for i, region in ipairs({TradeSkillFrame:GetRegions()}) do
+			if region:IsObjectType("Texture") then
+				if region:GetTexture() == [[Interface\ClassTrainerFrame\UI-ClassTrainer-HorizontalBar]] then
+					region:Hide()
+				end
 			end
 		end
-	end
 
-	--Add the mid section by messing with glue and newspaper clippings
-	local function CreateTex(parent, tex, layer, width, height, ...)
-		local texf = parent:CreateTexture(nil, layer)
-		texf:SetPoint(...)
-		texf:SetTexture(tex)
-		texf:SetWidth(width); texf:SetHeight(height)
-		return texf
-	end
-
-	--Scrollbar fix
-	CreateTex(TradeSkillListScrollFrame, [[Interface\ClassTrainerFrame\UI-ClassTrainer-ScrollBar]], "BACKGROUND", 30, 97.4,
-	"LEFT", TradeSkillListScrollFrame, "RIGHT", -3, 0):SetTexCoord(0, 0.46875, 0.2, 0.9609375);
-
-	--Move buttons alight them to the left bottom.
-	TradeSkillIncrementButton:ClearAllPoints()
-	TradeSkillIncrementButton:SetPoint("TOPLEFT", TradeSkillInputBox, "TOPRIGHT", 0, 1)
-
-	TradeSkillCreateButton:ClearAllPoints();
-	TradeSkillCreateButton:SetPoint("TOPLEFT", TradeSkillIncrementButton, "TOPRIGHT")
-	TradeSkillCancelButton:ClearAllPoints();
-	TradeSkillCancelButton:SetPoint("TOPLEFT", TradeSkillCreateButton, "TOPRIGHT")
-
-end
-
-local adjustTradeskill = function()
-
-	events.register("ADDON_LOADED", function(self, event, addon)
-
-		if addon == "Blizzard_TradeSkillUI" then
-			events.unregister("ADDON_LOADED")
-			applyTradeskillModifications()
+		--Add the mid section by messing with glue and newspaper clippings
+		local function CreateTex(parent, tex, layer, width, height, ...)
+			local texf = parent:CreateTexture(nil, layer)
+			texf:SetPoint(...)
+			texf:SetTexture(tex)
+			texf:SetWidth(width); texf:SetHeight(height)
+			return texf
 		end
 
-	end)
+		--Scrollbar fix
+		CreateTex(TradeSkillListScrollFrame, [[Interface\ClassTrainerFrame\UI-ClassTrainer-ScrollBar]], "BACKGROUND", 30, 97.4,
+		"LEFT", TradeSkillListScrollFrame, "RIGHT", -3, 0):SetTexCoord(0, 0.46875, 0.2, 0.9609375);
 
-end
+		--Move buttons alight them to the left bottom.
+		TradeSkillIncrementButton:ClearAllPoints()
+		TradeSkillIncrementButton:SetPoint("TOPLEFT", TradeSkillInputBox, "TOPRIGHT", 0, 1)
 
-ns.features.adjustTradeskill = adjustTradeskill
+		TradeSkillCreateButton:ClearAllPoints();
+		TradeSkillCreateButton:SetPoint("TOPLEFT", TradeSkillIncrementButton, "TOPRIGHT")
+		TradeSkillCancelButton:ClearAllPoints();
+		TradeSkillCancelButton:SetPoint("TOPLEFT", TradeSkillCreateButton, "TOPRIGHT")
+
+	end,
+
+})
+
+ns.features.adjustTradeskill = function() tradeModifications:new() end
