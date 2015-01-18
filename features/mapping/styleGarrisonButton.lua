@@ -1,6 +1,6 @@
 local addon, ns = ...
 
-local style = Darker.style
+local style = ns.lib.style
 
 ns.mapping.add(function(model, config)
 

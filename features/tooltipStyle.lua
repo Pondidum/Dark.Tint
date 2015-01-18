@@ -3,7 +3,7 @@ local addon, ns = ...
 local colors = ns.lib.colors
 local fonts = ns.lib.fonts
 local textures = ns.lib.textures
-local style = Darker.style
+local style = ns.lib.style
 
 -- credits : Aezay (TipTac) and Caellian for some parts of code.
 

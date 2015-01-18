@@ -13,7 +13,7 @@ local initialise = function()
 		fonts = Darker.media.fonts,
 		colors = Darker.media.colors,
 		textures = Darker.media.textures,
-		style = core.style,
+		style = Darker.style,
 		layout = core.layout,
 	}
 

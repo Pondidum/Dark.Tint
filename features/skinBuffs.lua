@@ -1,7 +1,7 @@
 local addon, ns = ...
 
 local fonts = ns.lib.fonts
-local style = Darker.style
+local style = ns.lib.style
 
 local skinBuffs = function()
 
