@@ -1,87 +1,99 @@
 local addon, ns = ...
 
+local class = ns.lib.class
 local style = ns.lib.style
 local layout = ns.lib.layout
-local events = ns.lib.events.new()
+local events = Darker.events
 
-local blizzardItems = {
-	--buttons:
-	MiniMapTracking = true,
-	MiniMapVoiceChatFrame = true,
-	MiniMapWorldMapButton = true,
-	QueueStatusMinimapButton = true,
-	MinimapZoomIn = true,
-	MinimapZoomOut = true,
-	MiniMapMailFrame = true,
-	MiniMapBattlefieldFrame = true,
-	GameTimeFrame = true,
-	FeedbackUIButton = true,
+local buttonContainer = class:extend({
 
-	--frames:
-	MinimapBackdrop = true,
-	TimeManagerClockButton = true,
-}
+	blizzardItems = {
+		--buttons:
+		MiniMapTracking = true,
+		MiniMapVoiceChatFrame = true,
+		MiniMapWorldMapButton = true,
+		QueueStatusMinimapButton = true,
+		MinimapZoomIn = true,
+		MinimapZoomOut = true,
+		MiniMapMailFrame = true,
+		MiniMapBattlefieldFrame = true,
+		GameTimeFrame = true,
+		FeedbackUIButton = true,
 
-ns.mapping.add(function(model, config)
+		--frames:
+		MinimapBackdrop = true,
+		TimeManagerClockButton = true,
+	},
 
-	local container = CreateFrame("Frame", nil, UIParent)
-	model.buttonContainer = container
+	ctor = function(self, model, config)
+		self:include(events)
+		self:register("ADDON_LOADED")
 
-	container:SetPoint("LEFT", model.map, "LEFT", 0, 0)
-	container:SetPoint("TOPRIGHT", model.notificationContainer, "BOTTOMRIGHT", 0, -config.spacing)
-	container:SetHeight(20)
+		self:buildUI()
+		self:hookup()
 
-	style:border(container)
+	end,
 
-	layout.init(container, {
-		wrap = true,
-		autosize = true,
-	})
+	ADDON_LOADED = function(self, addonName)
+		self:findButtons()
+	end,
 
-	local processButton = function(button)
+	hookup = function(self)
 
-		button:RegisterForDrag(nil)
-		button:ClearAllPoints()
-		button:SetParent(container)
+		self:processButton(QueueStatusMinimapButton)
 
-		container.add(button)
+		hooksecurefunc("CreateFrame", function(type, name, parent, templates)
+			if templates == "MiniMapButtonTemplate" then
+				self:findButtons()
+			end
+		end)
 
-	end
+	end,
 
-	local findButtons = function()
+	buildUI = function(self)
 
-		local buttons = {}
+		local container = CreateFrame("Frame", nil, UIParent)
+		model.buttonContainer = container
 
-		for i = 1, model.map:GetNumChildren() do
+		container:SetPoint("LEFT", model.map, "LEFT", 0, 0)
+		container:SetPoint("TOPRIGHT", model.notificationContainer, "BOTTOMRIGHT", 0, -config.spacing)
+		container:SetHeight(20)
 
-		 	local frame = select(i, model.map:GetChildren())
+		style:border(container)
+
+		layout.init(container, {
+			wrap = true,
+			autosize = true,
+		})
+
+		self.container = container
+	end,
+
+	findButtons = function(self)
+
+		for i = 1, self.model.map:GetNumChildren() do
+
+		 	local frame = select(i, self.model.map:GetChildren())
 			local name = frame:GetName()
 
-			if name and not blizzardItems[name] then
-				table.insert(buttons, frame)
+			if name and not self.blizzardItems[name] then
+				processButton(frame)
 			end
 
 		end
 
-		for i, frame in ipairs(buttons) do
+	end,
 
-			processButton(frame)
+	processButton = function(self, button)
 
-		end
+		button:RegisterForDrag(nil)
+		button:ClearAllPoints()
+		button:SetParent(self.container)
 
+		self.container.add(button)
 
-	end
+	end,
 
-	processButton(QueueStatusMinimapButton)
+})
 
-	hooksecurefunc("CreateFrame", function(type, name, parent, templates)
-		if templates == "MiniMapButtonTemplate" then
-			findButtons()
-		end
-	end)
-
-	events.register("ADDON_LOADED", function()
-		findButtons()
-	end)
-
-end)
+ns.mapping.add(function(model, config) buttonContainer:new(model, config) end)
