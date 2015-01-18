@@ -3,7 +3,7 @@ local addon, ns = ...
 local colors = ns.lib.colors
 local fonts = ns.lib.fonts
 local textures = ns.lib.textures
-local style = ns.lib.style
+local style = Darker.style
 
 -- credits : Aezay (TipTac) and Caellian for some parts of code.
 
@@ -134,8 +134,7 @@ local styleTooltips = function()
 	local healthBarBG = CreateFrame("Frame", "StatusBarBG", healthBar)
 	healthBarBG:SetFrameLevel(healthBar:GetFrameLevel() - 1)
 	healthBarBG:SetAllPoints(healthBar)
-	style.addBackground(healthBarBG)
-	style.addShadow(healthBarBG)
+	style:frame(healthBarBG)
 
 	healthBar:SetStatusBarColor(colors.background)
 
@@ -265,8 +264,7 @@ local styleTooltips = function()
 
 	local styleTooltip = function(self)
 		self:SetBackdrop(nil)
-		style.addBackground(self)
-		style.addShadow(self)
+		style:frame(self)
 
 		local r, g, b = unpack(colors.background)
 
