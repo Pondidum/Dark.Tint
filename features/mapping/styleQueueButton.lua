@@ -1,6 +1,6 @@
 local addon, ns = ...
 
-local style = ns.lib.style
+local style = Darker.style
 
 ns.mapping.add(function(model, config)
 
@@ -17,8 +17,7 @@ ns.mapping.add(function(model, config)
 
 	border:Hide()
 
-	style.addBackground(button)
-	style.addShadow(button)
+	style:frame(button)
 
 	button:SetParent(container)
 	container.add(button)
