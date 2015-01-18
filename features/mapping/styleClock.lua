@@ -1,6 +1,6 @@
 local addon, ns = ...
 
-local style = ns.lib.style
+local style = Darker.style
 
 ns.mapping.add(function(model, config)
 
@@ -14,8 +14,7 @@ ns.mapping.add(function(model, config)
 	clock:SetPoint("TOPLEFT", map, "BOTTOMLEFT", 0, -config.spacing)
 	clock:SetSize(60, 15)
 
-	style.addShadow(clock)
-	style.addBackground(clock)
+	style:frame(clock)
 
 	border:Hide()
 	alarm:SetAllPoints(clock)
